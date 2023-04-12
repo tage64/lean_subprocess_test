@@ -1,5 +1,10 @@
 # Test to execute clang as a subprocess in a Lean program
 
+UPDATE: The issue is that elan shim prepends the toolchain lib path to `LD_LIBRARY_PATH`.
+Please see issue [here][4].
+A temporary solution is to run Lean from the direct installation and not via Elan.
+So run `~/.elan/toolchains/.../bin/lake` instead of just `lake`.
+
 This is a very small program written in [Lean][1] which only spawns [clang][2] as a subprocess and prints it stdout, stderr and exit code.
 I get a very strange output on my machine signifying that [clang][2] cannot find its shared libraries (.so-files).
 Note that I'm talking about the .so files that the clang executable needs to run and not anything else.
@@ -46,3 +51,4 @@ However, then I got this strange error which was very frustrating and took half 
 [1]: https://leanprover.github.io/about/
 [2]: https://clang.llvm.org
 [3]: https://github.com/leanprover/lake
+[4]: https://github.com/leanprover/elan/issues/90
