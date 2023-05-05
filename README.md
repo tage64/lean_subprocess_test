@@ -1,9 +1,13 @@
 # Test to execute clang as a subprocess in a Lean program
 
+EDIT: This has been fixed in Elan, this issue is no longer relevant.
+
 UPDATE: The issue is that elan shim prepends the toolchain lib path to `LD_LIBRARY_PATH`.
 Please see issue [here][4].
 A temporary solution is to run Lean from the direct installation and not via Elan.
 So run `~/.elan/toolchains/.../bin/lake` instead of just `lake`.
+
+dd>>>>>>> 4fd926f (Update the README because the issue is fixed.)
 
 This is a very small program written in [Lean][1] which only spawns [clang][2] as a subprocess and prints it stdout, stderr and exit code.
 I get a very strange output on my machine signifying that [clang][2] cannot find its shared libraries (.so-files).
